@@ -59,21 +59,5 @@ input[type="submit"] {
   .item.dblselected {
     border: solid 9px; }
 
-.site__footer {
-  height: 50px;
-  background-color: #4072b2;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0; }
-  .site__footer-credits {
-    line-height: 50px;
-    vertical-align: middle;
-    position: relative;
-    display: inline-block;
-    font-size: 12px;
-    padding-left: 20px; }
-
 ul {
   list-style: none; }
