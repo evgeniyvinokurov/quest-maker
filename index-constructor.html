@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Создатель квестов - "Конструктор"</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/treejs/style.min.css" />
+	<script type="text/javascript" src="all.js"></script>
+</head>
+<body>
+	<div class="site">
+		<!-- Header block -->
+		<div class="site__header">
+			<div class="site__header-title">				
+				Создатель квестов - "Конструктор"
+			</div>
+		</div>	
+		<!-- Header block end -->
+
+		<!-- Content block -->
+		<div class="site__content">	
+			<div class="edit_mode_on">
+				<div class="controls">
+					<div class="controls__item controls__item--one">
+						<input type="text" class="text-input" name="name"></input>
+						<input type="submit" name="new-entity" value="new entity"></input>
+						<input type="submit" name="add-group" value="add group"></input>
+						<input type="submit" name="load-test" value="load test game"></input>
+					</div>
+					<div class="controls__item controls__item--export-import">
+						<textarea type="textarea" multiline name="import-export-json" value="">
+						</textarea>
+						<input type="submit" name="export" value="export"></input>
+						<input type="submit" name="import" value="import"></input>
+					</div>
+					<div class="controls__item controls__item--tree">
+						<div id="using_json_2">Here will be game tree</div>
+					</div>
+				</div>
+				<div id="testoutput" class="output"></div>
+			</div>
+			<input id="editmode" type="checkbox" name="mode" value="off">edit mode</input>
+			<input type="submit" name="start" value="start"></input>
+			<br/>
+			<div id="game" class="game"></div>
+			<ul>
+				<li>// Одинарное выделение фиксирует текущую сумму</li>
+				<li>// Каждый объект имеет сумму</li>
+				<li>// Двойное выделение фиксирует объекты, которые появляются при текущей сумме. </li>
+				<li>// Выделить двойным кликом, нажать адд гроуп - записать действие</li>
+				<br>
+				<li>// Лишние варианты могут появиться если сработают суммы, так можно тестировать их работу, конечный вариант лучше проверять после обновления на главной страничке</li>
+				<li>// Подразумевается, что совместное выделение объектов должно что-то означать, например, в начале можно обозначить общие действия, а выделением создавать контекст, также например совмещать предметы, перемещать их и прочее, на что способна ваша фантазия в определенных рамках</li>
+				<li>// Если что-то пошло не так просто обновите страничку (данные не сохранятся, скопируйте их)</li>				
+				<br>
+				<li>// <a href="index.html">Назад</a> на главную </li>
+			</ul>
+		</div>
+		<!-- Content block end -->
+
+		<!-- Footer block  -->
+		<div class="site__footer js-footer">			
+			<div class="site__footer-credits">
+				Game-Quest, Copyright Vinokurov Evgeniy 2020
+			</div>
+		</div>
+		<!-- Footer block end -->		
+	</div>	
+</body>
+</html>

@@ -1,0 +1,109 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+$blue: #254267;
+$lightblue: adjust-color($blue, $lightness: 20%);
+
+
+.site__header {
+	height: 50px;
+	background-color: #254267;
+	color: white;
+	position: relative;
+
+	&-title {
+	    padding-left: 20px;
+	    line-height: 50px;
+	    vertical-align: middle;
+	    position: relative;
+	    display: inline-block;
+	    font-weight: 600;
+	}
+}
+
+.controls {
+	&__item {
+		display: inline-block;
+		padding: 20px;
+		border: 4px solid $lightblue;
+	}
+}
+
+.edit_mode_on {
+	padding: 10px;
+	display: none;
+}
+
+input[type="text"], textarea {
+	padding: 10px;
+	margin: 10px;
+	border-radius: 0px;
+	border: 2px solid $lightblue;
+}
+
+textarea {
+	height: 100px;
+}
+
+input[type="submit"] {
+	padding: 7px;
+    margin: 10px;
+    background-color: transparent;
+    box-shadow: none;
+    border: 2px solid $lightblue;
+    color: $lightblue;
+
+    &:hover {
+    	color: white;
+    	background-color: $lightblue;
+    	cursor: pointer;
+    }
+}
+
+.text-input {
+	display: block;
+}
+
+.item 
+{
+	padding: 10px;
+	margin: 5px;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+
+	&.selected
+	{
+		border: solid 5px;
+	}
+	&.dblselected
+	{
+		border: solid 9px;
+	}
+}
+
+.site__footer {
+	height: 50px;
+	background-color: $lightblue;
+	color: white; 
+
+	position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+	&-credits {
+	    line-height: 50px;
+	    vertical-align: middle;
+	    position: relative;
+	    display: inline-block;
+	    font-size: 12px;
+	    padding-left: 20px;
+	}
+}
+
+ul {
+	list-style: none;
+}

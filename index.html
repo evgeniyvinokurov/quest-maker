@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Создатель квестов - "Релиз"</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript" src="all.js"></script>
+</head>
+<body>
+	<div class="site">
+		<!-- Header block -->
+		<div class="site__header">
+			<div class="site__header-title">
+				Создатель квестов - "Релиз"
+			</div>
+		</div>	
+		<!-- Header block end -->
+
+		<!-- Content block -->
+		<div class="site__content">			
+			<input class="start-button" type="submit" name="start" value="start"></input>
+			<br/>
+					<div class="controls__item controls__item--export-import">
+						<textarea type="textarea" multiline name="import-export-json" value="">
+						[{"sum":0,"objs":[{"name":"комната 1","sum":"457824170","color":"#6C3AD2"},{"name":"комната 2","sum":"3507682407","color":"#0DBF36"}]},{"sum":3507682407,"objs":[{"name":"стул 1","sum":"1579715866","color":"#DD6181"},{"name":"стул 2","sum":"4063606303","color":"#F2C145"},{"name":"стол","sum":"3454353328","color":"#397AC7"}]},{"sum":457824170,"objs":[{"name":"вентилляция","sum":"2751702254","color":"#3A19AB"}]},{"sum":3912177498,"objs":[{"name":"залезть в вентилляцию","sum":"1419723400","color":"#297B4C"}]},{"sum":1419723400,"objs":[{"name":"вы выбрались из дома","sum":"3041842487"}]},{"sum":6101146339,"objs":[{"name":"залезть в вентилляцию","sum":"1419723400"}],"name":"комната 1+стул 1+стул 2"}]
+						</textarea>
+						<input type="submit" name="import" value="import"></input>
+					</div>
+			<div id="game" class="game"></div>
+			<ul>
+				<li>// Выделить объект или несколько объектов - получить новые варианты для выделения</li>
+				<li>// Цель - получить финальный объект</li>				
+				<li>// Можно снимать выделение и заново выделять разные комбинации</li>				
+				<br>
+				<li>// Есть еще <a href="index-constructor.html">Конструктор</a></li>
+			</ul>
+		</div>
+		<!-- Content block end -->
+
+		<!-- Footer block  -->
+		<div class="site__footer js-footer">			
+			<div class="site__footer-credits">
+				Game-Quest, Copyright Vinokurov Evgeniy 2020
+			</div>
+		</div>
+		<!-- Footer block end -->		
+	</div>	
+</body>
+</html>
