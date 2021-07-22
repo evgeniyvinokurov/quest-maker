@@ -47,12 +47,15 @@ jQuery(document).ready(function ($) {
 						result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
 					}
 				} else {
-					result.push({id: ar[i].sum, parent: "#", text: ar[i].name});
 
-					for(obj of ar[i].objs) {
-						haveSums.push(obj.sum);
-						result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
-					}
+					if (ar[i].name)
+						result.push({id: ar[i].sum, parent: "#", text: ar[i].name});
+
+					if (ar[i].objs)
+						for(obj of ar[i].objs) {
+							haveSums.push(obj.sum);
+							result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
+						}
 				}
 			}
 
@@ -124,6 +127,13 @@ jQuery(document).ready(function ($) {
 			fillTree(testEngine.sums);
 		})
 
+		$(document).on("click", '[name=delete-node]', function(e){
+			e.preventDefault();
+			var sum_to_delete = $('#using_json_2').jstree('get_selected')[0];
+			testEngine.delete_sum(testEngine.sums, sum_to_delete);			
+			fillTree(testEngine.sums);
+		})
+
 
 
 		// ИМПОРТ И ЭКСПОРТ
@@ -132,10 +142,11 @@ jQuery(document).ready(function ($) {
 
 			var value_to_parse = $("[name=import-export-json]").val();
 			var objs = JSON.parse(value_to_parse);
-			
-			game.edit_mode ? testEngine.load(objs): (gameEngine.load(objs), $(this).parent().hide());
 
-			fillTree(objs);
+			var engine = game.edit_mode ? testEngine: gameEngine;			
+			engine.load(objs);
+
+			fillTree(engine.sums);
 		})
 
 		$(document).on("click", '[name=export]', function(e){

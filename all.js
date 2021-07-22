@@ -59,7 +59,7 @@ engine = function(){
 		var self = this;
 
 		$.each(imports, function(i, imports_item){
-			self.set_sum(imports_item.sum, imports_item.objs);
+			self.set_sum(imports_item.sum, imports_item.objs, imports_item.name);
 		})
 	}
 
@@ -74,7 +74,6 @@ engine = function(){
 
 	// Проверить контрольные суммы и подобрать следующие объекты 
 	this.check_sums = function(sum){
-		console.log('checking sum', sum);
 		var self = this;
 
 		$.each(this.sums, function(i, sum_obj){
@@ -84,6 +83,23 @@ engine = function(){
 				//game.add_objs(sum_obj.objs);
 			}
 		});
+	}
+
+	this.delete_sum = function(objs, sum){
+		var self = this, j = null;
+
+		$.each(objs, function(i, sum_obj){
+			if(sum_obj.sum == sum){
+				j = i;
+			}
+
+			if (sum_obj.objs){
+				self.delete_sum(sum_obj.objs, sum);
+			}
+		});		
+
+		if (j != null)
+			objs.splice(j, 1);
 	}
 }
 
@@ -197,12 +213,15 @@ jQuery(document).ready(function ($) {
 						result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
 					}
 				} else {
-					result.push({id: ar[i].sum, parent: "#", text: ar[i].name});
 
-					for(obj of ar[i].objs) {
-						haveSums.push(obj.sum);
-						result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
-					}
+					if (ar[i].name)
+						result.push({id: ar[i].sum, parent: "#", text: ar[i].name});
+
+					if (ar[i].objs)
+						for(obj of ar[i].objs) {
+							haveSums.push(obj.sum);
+							result.push({id: obj.sum, parent: ar[i].sum, text: obj.name})
+						}
 				}
 			}
 
@@ -274,6 +293,13 @@ jQuery(document).ready(function ($) {
 			fillTree(testEngine.sums);
 		})
 
+		$(document).on("click", '[name=delete-node]', function(e){
+			e.preventDefault();
+			var sum_to_delete = $('#using_json_2').jstree('get_selected')[0];
+			testEngine.delete_sum(testEngine.sums, sum_to_delete);			
+			fillTree(testEngine.sums);
+		})
+
 
 
 		// ИМПОРТ И ЭКСПОРТ
@@ -282,10 +308,11 @@ jQuery(document).ready(function ($) {
 
 			var value_to_parse = $("[name=import-export-json]").val();
 			var objs = JSON.parse(value_to_parse);
-			
-			game.edit_mode ? testEngine.load(objs): (gameEngine.load(objs), $(this).parent().hide());
 
-			fillTree(objs);
+			var engine = game.edit_mode ? testEngine: gameEngine;			
+			engine.load(objs);
+
+			fillTree(engine.sums);
 		})
 
 		$(document).on("click", '[name=export]', function(e){

@@ -15,7 +15,7 @@ engine = function(){
 		var self = this;
 
 		$.each(imports, function(i, imports_item){
-			self.set_sum(imports_item.sum, imports_item.objs);
+			self.set_sum(imports_item.sum, imports_item.objs, imports_item.name);
 		})
 	}
 
@@ -30,7 +30,6 @@ engine = function(){
 
 	// Проверить контрольные суммы и подобрать следующие объекты 
 	this.check_sums = function(sum){
-		console.log('checking sum', sum);
 		var self = this;
 
 		$.each(this.sums, function(i, sum_obj){
@@ -40,6 +39,23 @@ engine = function(){
 				//game.add_objs(sum_obj.objs);
 			}
 		});
+	}
+
+	this.delete_sum = function(objs, sum){
+		var self = this, j = null;
+
+		$.each(objs, function(i, sum_obj){
+			if(sum_obj.sum == sum){
+				j = i;
+			}
+
+			if (sum_obj.objs){
+				self.delete_sum(sum_obj.objs, sum);
+			}
+		});		
+
+		if (j != null)
+			objs.splice(j, 1);
 	}
 }
 
