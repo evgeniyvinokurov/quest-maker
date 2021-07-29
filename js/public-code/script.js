@@ -190,22 +190,20 @@ jQuery(document).ready(function ($) {
 		})
 
 		$(document).on("click", '.game .item', function(e){
-			e.preventDefault();			
-			showMenu(this);
+			e.preventDefault();		
 
-			//$(this).toggleClass("selected");			
-			//game.recompute();	
-			//game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
+			if (game.edit_mode) {	
+				showMenu(this);
+			} else {
+				$(this).toggleClass("selected");
+				game.recompute();	
+				game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
+			}
 		})
 
 		$(document).on("click", '.output .item', function(e){
 			e.preventDefault();
 			showMenu(this);
-			
-			//$(this).toggleClass("selected");	
-
-			//game.recompute();	
-			//game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
 		})
 
 		$(document).on("click", '.select,.dblselect,.unselect', function(e){
@@ -229,6 +227,9 @@ jQuery(document).ready(function ($) {
 					$(self).parent().parent().removeClass("dblselected");
 					break;
 			}	
+
+			game.recompute();	
+			game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
 
 		 	removeMenu();
 		})
