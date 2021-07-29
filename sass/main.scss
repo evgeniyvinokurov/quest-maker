@@ -88,3 +88,25 @@ input[type="submit"] {
 ul {
 	list-style: none;
 }
+
+
+.select, .dblselect, .unselect {
+	display: block;
+	width: 100px;
+	cursor: pointer;
+	background-color: lightgrey;	
+	padding: 10px;
+}
+.select:hover, .dblselect:hover, .unselect:hover {
+	background-color: darkgrey;
+	cursor: pointer;	
+}
+
+.menu {
+	position: absolute;
+	top: 30px;
+}
+
+.item {
+	position: relative;
+}

@@ -238,6 +238,15 @@ jQuery(document).ready(function ($) {
 
 			notEmptyTree = true;
 		}
+
+		var showMenu = function(self) {
+			$(self).append("<div class='menu'><div class='select' data-action='select'>select</div><div class='dblselect' data-action='dblselect'>double select</div><div class='unselect' data-action='unselect'>unselect</div></div>")
+		}
+
+		var removeMenu = function() {
+			var allmenus = $(document).find(".menu");
+			allmenus.remove();
+		}
 		
 
 		$(document).on("click", '[name=new-entity]', function(e){
@@ -347,24 +356,53 @@ jQuery(document).ready(function ($) {
 		})
 
 		$(document).on("click", '.game .item', function(e){
-			e.preventDefault();
-			$(this).toggleClass("selected");	
-			
-			game.recompute();	
-			game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
+			e.preventDefault();			
+			showMenu(this);
+
+			//$(this).toggleClass("selected");			
+			//game.recompute();	
+			//game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
 		})
 
 		$(document).on("click", '.output .item', function(e){
 			e.preventDefault();
-			$(this).toggleClass("selected");	
+			showMenu(this);
+			
+			//$(this).toggleClass("selected");	
 
-			game.recompute();	
-			game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
+			//game.recompute();	
+			//game.edit_mode ? testEngine.check_sums(game.sum): gameEngine.check_sums(game.sum);
 		})
-		$(document).on("dblclick", '.output .item', function(e){
+
+		$(document).on("click", '.select,.dblselect,.unselect', function(e){
 			e.preventDefault();
-			$(this).toggleClass("dblselected");	
+			e.stopPropagation()
+
+			var self = this;			
+			var action = $(self).attr("data-action");
+
+			switch(action){
+				case "select":
+					$(self).parent().parent().removeClass("dblselected");
+					$(self).parent().parent().addClass("selected");
+					break;
+				case "dblselect":
+					$(self).parent().parent().removeClass("selected");
+					$(self).parent().parent().addClass("dblselected");
+					break;
+				case "unselect":
+					$(self).parent().parent().removeClass("selected");
+					$(self).parent().parent().removeClass("dblselected");
+					break;
+			}	
+
+		 	removeMenu();
 		})
+
+		//$(document).on("dblclick", '.output .item', function(e){
+			//e.preventDefault();
+			//$(this).toggleClass("dblselected");	
+		//})
 	});	
 });
 
