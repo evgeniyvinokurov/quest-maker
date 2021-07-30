@@ -309,6 +309,12 @@ jQuery(document).ready(function ($) {
 			fillTree(testEngine.sums);
 		})
 
+		$(document).on("click", '[name=get-node]', function(e){
+			e.preventDefault();
+			var sum = $('#using_json_2').jstree('get_selected')[0];
+			testEngine.check_sums(sum);
+		})
+
 
 
 		// ИМПОРТ И ЭКСПОРТ
@@ -350,9 +356,16 @@ jQuery(document).ready(function ($) {
 			var value_to_parse = $("[name=import-export-json]").val();
 			var objs = JSON.parse(value_to_parse);
 			
-			game.edit_mode ? testEngine.load(objs): gameEngine.load(objs);
-
+			game.edit_mode ? testEngine.load(objs): (gameEngine.load(objs), $("[name=import-export-json]").parent().remove());
 			start();
+		})
+
+		$(document).on("click", '[name=unselect-all]', function(e){
+			e.preventDefault();
+			$.each($(".output .item.selected"), function(i, item){
+				$(item).removeClass("selected");
+			});
+
 		})
 
 		$(document).on("click", '.game .item', function(e){

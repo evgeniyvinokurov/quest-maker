@@ -50,7 +50,7 @@ textarea {
 input[type="submit"] {
 	padding: 7px;
     margin: 10px;
-    background-color: transparent;
+    background-color: white;
     box-shadow: none;
     border: 2px solid $lightblue;
     color: $lightblue;
@@ -110,4 +110,10 @@ ul {
 
 .item {
 	position: relative;
+}
+
+.fixed_controls {
+	position: fixed;
+	top: 70px;
+	left: 10px;
 }
