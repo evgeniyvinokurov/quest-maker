@@ -1,5 +1,8 @@
-# Javascript basic object-click-block quest maker
+# Javascript quest maker  
   
+Instructions in russian included  
+Use sums for objects mapping, make quest with block interfaces  
+
 History  
 2014 - idea of sum controled engine  
 2015 - first attempts  
