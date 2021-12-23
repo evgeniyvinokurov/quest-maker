@@ -24,17 +24,15 @@
 					<input type="submit" name="unselect-all" value="unselect all"></input>
 					<input type="submit" name="get-node" value="get node"></input>					
 					<input type="submit" name="delete-node" value="delete node"></input>
+					<input type="text" class="text-input" name="name"></input>
+					<input type="submit" name="new-entity" value="new entity"></input>
+					<input type="submit" name="add-group" value="add group"></input>
 				</div>
 				<div class="controls">
-					<div class="controls__item controls__item--one">
-						<input type="text" class="text-input" name="name"></input>
-						<input type="submit" name="new-entity" value="new entity"></input>
-						<input type="submit" name="add-group" value="add group"></input>
-						<input type="submit" name="load-test" value="load test game"></input>
-					</div>
 					<div class="controls__item controls__item--export-import">
 						<textarea type="textarea" multiline name="import-export-json" value="">
 						</textarea>
+						<input type="submit" name="load-test" value="load test game"></input>
 						<input type="submit" name="export" value="export"></input>
 						<input type="submit" name="import" value="import"></input>
 					</div>
@@ -48,18 +46,19 @@
 			<input type="submit" name="start" value="start"></input>
 			<br/>
 			<div id="game" class="game"></div>
-			<ul>
-				<li>// Одинарное выделение фиксирует текущую сумму</li>
-				<li>// Каждый объект имеет сумму</li>
-				<li>// Двойное выделение фиксирует объекты, которые появляются при текущей сумме. </li>
-				<li>// Выделить двойным кликом, нажать адд гроуп - записать действие</li>
-				<br>
-				<li>// Лишние варианты могут появиться если сработают суммы, так можно тестировать их работу, конечный вариант лучше проверять после обновления на главной страничке</li>
-				<li>// Подразумевается, что совместное выделение объектов должно что-то означать, например, в начале можно обозначить общие действия, а выделением создавать контекст, также например совмещать предметы, перемещать их и прочее, на что способна ваша фантазия в определенных рамках</li>
-				<li>// Если что-то пошло не так просто обновите страничку (данные не сохранятся, скопируйте их)</li>				
-				<br>
-				<li>// <a href="index.html">Назад</a> на главную </li>
-			</ul>
+			<div class="instructions">
+				<p>Инструкции</p>
+				<ul>
+					<li>Каждый объект и группа объектов имеют сумму</li>
+					<li>Одинарное выделение фиксирует текущую сумму</li>
+					<li>Двойное выделение фиксирует объекты, которые появляются при текущей сумме.</li><br>
+					<li>Выделить двойным выделением, нажать адд гроуп - записать сумму объектов, которые должны появиться. Если у вас нет выделенных одинарно объектов, то выделенные дважды объекты появятся в начале (без суммы)</li>
+					<br>
+					<li>Подразумевается, что совместное выделение объектов должно что-то означать, например, в начале можно обозначить общие действия, а выделением создавать контекст, также например совмещать предметы, перемещать их и прочее, на что способна ваша фантазия в определенных рамках. Например сбор вещей в рюкзак можно организовать с помощью "хуков"</li>
+					<li>Если что-то пошло не так просто обновите страничку (данные не сохранятся, скопируйте их)</li>
+				</ul>
+				<p><a href="index.html">Назад</a> на главную </p>
+			</div>
 		</div>
 		<!-- Content block end -->
 	

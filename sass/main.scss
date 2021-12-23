@@ -24,6 +24,8 @@ $lightblue: adjust-color($blue, $lightness: 20%);
 }
 
 .controls {
+	margin-top: 100px;
+
 	&__item {
 		display: inline-block;
 		padding: 20px;
@@ -32,7 +34,6 @@ $lightblue: adjust-color($blue, $lightness: 20%);
 }
 
 .edit_mode_on {
-	padding: 10px;
 	display: none;
 }
 
@@ -63,7 +64,7 @@ input[type="submit"] {
 }
 
 .text-input {
-	display: block;
+	display: inline-block;
 }
 
 .item 
@@ -86,7 +87,9 @@ input[type="submit"] {
 
 
 ul {
-	list-style: none;
+	list-style: inside;
+	padding: 0px;
+	width: 700px;
 }
 
 
@@ -113,7 +116,14 @@ ul {
 }
 
 .fixed_controls {
+	background-color: white;
 	position: fixed;
 	top: 70px;
 	left: 10px;
+	width: 700px;
+	border: 4px solid $lightblue;
+}
+
+.instructions {
+	
 }

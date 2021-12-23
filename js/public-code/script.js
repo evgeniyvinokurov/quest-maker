@@ -196,8 +196,9 @@ jQuery(document).ready(function ($) {
 
 		$(document).on("click", '[name=unselect-all]', function(e){
 			e.preventDefault();
-			$.each($(".output .item.selected"), function(i, item){
+			$.each($(".output .item.selected, .output .item.dblselected"), function(i, item){
 				$(item).removeClass("selected");
+				$(item).removeClass("dblselected");
 			});
 
 		})
